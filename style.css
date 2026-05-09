@@ -1,0 +1,371 @@
+:root {
+    --primary-color: #ff4081; /* Glowing neon pink */
+    --secondary-color: #00e5ff; /* Glowing cyan */
+    --text-light: #f0f0f0;
+    --text-dark: #121212;
+    --bg-overlay: rgba(10, 10, 15, 0.85); /* Darker overlay for minimalist dark theme */
+    --glass-bg: rgba(20, 20, 25, 0.5);
+    --glass-border: rgba(255, 64, 129, 0.3); /* Neon border */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: #050505; /* Fallback */
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('images/minimal_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -2;
+}
+
+.background-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-overlay);
+    z-index: -1;
+}
+
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0; /* Behind content but above background */
+    overflow: hidden;
+}
+
+.flower-particle {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    filter: drop-shadow(0 0 10px var(--primary-color)) drop-shadow(0 0 20px var(--primary-color));
+    opacity: 0.8;
+    animation: floatUp 15s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+h1, h2, h3, .bible-verse {
+    font-family: 'Playfair Display', serif;
+}
+
+main {
+    position: relative;
+    z-index: 10;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.pre-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-light);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.name-highlight {
+    color: var(--primary-color);
+    text-shadow: 0 0 20px rgba(255, 64, 129, 0.6), 0 0 40px rgba(255, 64, 129, 0.4);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0.6;
+}
+
+.scroll-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    background: transparent;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.1) inset;
+}
+
+.scroll-btn:hover {
+    background: rgba(255, 64, 129, 0.1);
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.4), 0 0 20px rgba(255, 64, 129, 0.2) inset;
+    transform: translateY(-3px);
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.scroll-btn:hover .arrow {
+    transform: translateY(3px);
+}
+
+/* Letter Section */
+.letter-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 4rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255, 64, 129, 0.1);
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.flower-decoration {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.1;
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+.top-left {
+    top: -20px;
+    left: -20px;
+    transform: rotate(-45deg);
+}
+
+.bottom-right {
+    bottom: -20px;
+    right: -20px;
+    transform: rotate(135deg);
+}
+
+.letter-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    line-height: 1.8;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.bible-verse {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-left: 2px solid var(--secondary-color);
+    background: rgba(0, 229, 255, 0.05);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+.verse-ref {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: normal;
+    text-shadow: none;
+}
+
+.sign-off {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem !important;
+    text-align: right !important;
+    margin-top: 3rem;
+    color: var(--primary-color) !important;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(255, 64, 129, 0.4);
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    opacity: 0.5;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.photo-card {
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.4s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--glass-border);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 64, 129, 0.2);
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease, filter 0.4s ease;
+    filter: grayscale(40%) contrast(1.1); /* Slightly muted for dark theme */
+}
+
+.photo-card:hover .gallery-img {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(1.1);
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 1rem;
+    font-size: 0.85rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover .overlay-text {
+    transform: translateY(0);
+}
+
+.photo-caption {
+    margin-top: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    opacity: 0.9;
+    text-shadow: 0 0 5px rgba(255, 64, 129, 0.3);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    background: transparent;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    opacity: 0.5;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3.5rem;
+    }
+    
+    .glass-card {
+        padding: 2rem;
+    }
+    
+    .letter-content p {
+        font-size: 1rem;
+    }
+    
+    .bible-verse {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+}
